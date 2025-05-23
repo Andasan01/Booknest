@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Books - BookNest</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #a8a1be;
+      color: #333;
+    }
+    header {
+      background: #2c263f;
+      padding: 1rem 1.5rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #18bc9c;
+    }
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #34495e;
+    }
+    /* Grid for books */
+    .book-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 1.5rem;
+    }
+    .book-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .book-card:hover {
+      box-shadow: 0 8px 15px rgb(0 0 0 / 0.15);
+    }
+    .book-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+    .book-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .book-content h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      min-height: 48px;
+    }
+    .book-content p {
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: #18bc9c;
+      font-size: 1.1rem;
+    }
+    button {
+      padding: 0.5rem 0.75rem;
+      background: #18bc9c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #159f87;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #2c263f;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    /* Responsive header nav for small screens */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 0.75rem;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BookNest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="cart.html">Cart</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Browse Our Collection</h2>
+    <div class="book-list" id="bookList">
+
+      <!-- Book 1 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://eu-images.contentstack.com/v3/assets/blt892f41c9788ae399/blt3e832c6b02e9781c/664eff4eb2aa94fc5ef26189/advanced-books-on-javascript.png" alt="JavaScript Essentials" />
+        <div class="book-content">
+          <h4>JavaScript Essentials</h4>
+          <p>$24.99</p>
+          <button onclick="addToCart('JavaScript Essentials', 24.99, 'https://eu-images.contentstack.com/v3/assets/blt892f41c9788ae399/blt3e832c6b02e9781c/664eff4eb2aa94fc5ef26189/advanced-books-on-javascript.png')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="HTML & CSS Mastery" />
+        <div class="book-content">
+          <h4>HTML & CSS Mastery</h4>
+          <p>$19.99</p>
+          <button onclick="addToCart('HTML & CSS Mastery', 19.99, 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 3 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="React for Beginners" />
+        <div class="book-content">
+          <h4>React for Beginners</h4>
+          <p>$34.99</p>
+          <button onclick="addToCart('React for Beginners', 34.99, 'https://images.unsplash.com/photo-1512820790803-83ca734da794')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 4 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1519682337058-a94d519337bc" alt="Python Programming" />
+        <div class="book-content">
+          <h4>Python Programming</h4>
+          <p>$27.50</p>
+          <button onclick="addToCart('Python Programming', 27.50, 'https://images.unsplash.com/photo-1519682337058-a94d519337bc')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 5 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d" alt="Effective Communication" />
+        <div class="book-content">
+          <h4>Effective Communication</h4>
+          <p>$21.95</p>
+          <button onclick="addToCart('Effective Communication', 21.95, 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 6 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66" alt="Mastering UX Design" />
+        <div class="book-content">
+          <h4>Mastering UX Design</h4>
+          <p>$32.00</p>
+          <button onclick="addToCart('Mastering UX Design', 32.00, 'https://images.unsplash.com/photo-1507842217343-583bb7270b66')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Book 7 -->
+      <div class="book-card" tabindex="0">
+        <img loading="lazy" src="https://www.securityindustry.org/wp-content/uploads/2022/11/Data-Privacy-Code-of-Practice-887x488.jpg" alt="Data Privacy Code of Practice" />
+        <div class="book-content">
+          <h4>Data Privacy Code of Practice</h4>
+          <p>$29.99</p>
+          <button onclick="addToCart('Data Privacy Code of Practice', 29.99, 'https://www.securityindustry.org/wp-content/uploads/2022/11/Data-Privacy-Code-of-Practice-887x488.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script>
+    function addToCart(name, price, image) {
+      // Get existing cart or empty array
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Check if the item already exists
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`Added "${name}" to cart.`);
+    }
+  </script>
+</body>
+</html>

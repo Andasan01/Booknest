@@ -1,0 +1,505 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #a8a1be;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  /* Header */
+  header {
+    background-color: #2c263f;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+  }
+  
+  nav a {
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main container */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Featured section */
+  .featured h3 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c263f;
+  }
+  
+  /* Slider container */
+  .slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  }
+  
+  .slider-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Book cards */
+  .book-card {
+    flex: 0 0 180px;
+    margin: 0 10px;
+    background: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 370px;
+  }
+  
+  .book-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.7rem;
+  }
+  
+  .book-card h4 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    flex-grow: 0;
+  }
+  
+  /* Aligned prices */
+  .book-card p {
+    color: #444;
+    font-weight: bold;
+    margin: 0.3rem 0 1rem 0;
+    height: 1.4em;  /* fixed height to align */
+    line-height: 1.4em;
+    text-align: center;
+    flex-grow: 0;
+  }
+  
+  /* Styled buttons */
+  .book-card button {
+    background-color: #2c263f; /* Medium Sea Green */
+    border: none;
+    color: white;
+    padding: 10px 0;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+  
+  .book-card button:hover {
+    background-color: #2c263f; /* Darker Sea Green */
+  }
+  
+  /* Slider buttons */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.3);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 12px;
+    border-radius: 5px;
+    user-select: none;
+    z-index: 10;
+    transition: background 0.3s ease;
+  }
+  
+  .slider-btn:hover {
+    background: rgba(0,0,0,0.6);
+  }
+  
+  .slider-btn.left {
+    left: 5px;
+  }
+  
+  .slider-btn.right {
+    right: 5px;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #2c263f;
+    color: white;
+    margin-top: 4rem;
+    font-weight: 600;
+  }
+  
+  /* Responsive for smaller screens */
+  @media (max-width: 600px) {
+    .book-card {
+      flex: 0 0 140px;
+      height: 300px;
+    }
+    .book-card img {
+      height: 170px;
+    }
+  }
+  
+  .cart-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .cart-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .item-info {
+    flex-grow: 1;
+  }
+  
+  .item-info h4 {
+    font-size: 18px;
+    margin: 0 0 5px;
+  }
+  
+  .item-info p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .cart-summary {
+    margin-top: 30px;
+    text-align: right;
+  }
+  
+  .cart-summary h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .checkout-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-btn:hover {
+    background-color: #27ae60;
+  }
+  
+  .books-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .books-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.4rem;
+    color: #222;
+  }
+  
+  .books-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .book-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+    width: 180px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .book-item:hover {
+    transform: translateY(-8px);
+  }
+  
+  .book-image {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+  }
+  
+  .book-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #111;
+  }
+  
+  .price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #0077cc;
+    margin-bottom: 12px;
+  }
+  
+  .book-item button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-item button:hover {
+    background-color: #357abd;
+  }
+  
+  .book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adds space between cards */
+  justify-content: center;
+  padding: 20px;
+}
+
+.book-card {
+  width: 200px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+main {
+  padding: 20px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-card h4 {
+  margin: 12px 0 6px;
+  font-size: 18px;
+}
+
+.book-card .price {
+  color: #27ae60;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-cart,
+.btn-details {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.btn-cart {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.btn-details {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn-cart:hover {
+  background-color: #2980b9;
+}
+
+.btn-details:hover {
+  background-color: #27ae60;
+}
+
+#checkoutBtn:hover {
+  background: #159f87;
+}
+
+/* Make sure HTML and body take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Use flexbox to push footer to bottom */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Make the main section grow to fill space */
+main {
+  flex: 1;
+}
+
+/* Footer style (already included, just keep it) */
+footer {
+  background: #2c263f;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+
+  

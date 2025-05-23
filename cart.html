@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart BookNest</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #a8a1be;
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Wrapper to hold main content and footer */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+      flex: 1; /* This makes main expand to fill available space pushing footer down */
+    }
+
+    header {
+      background: #2c263f;
+      padding: 1rem 1.5rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #18bc9c;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: #34495e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+
+    thead tr {
+      background: #18bc9c;
+      color: white;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      vertical-align: middle;
+    }
+
+    tbody tr:hover {
+      background: #f1f9f7;
+    }
+
+    img {
+      width: 70px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .quantity-input {
+      width: 50px;
+      padding: 0.3rem;
+      font-size: 1rem;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .remove-btn {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      background: #c0392b;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.5rem 0;
+      color: #2c3e50;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 1.2rem;
+      color: #777;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #2c263f;
+      color: white;
+      margin-top: auto; /* Push footer down */
+      /* no fixed positioning so it respects content height */
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      tbody tr {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 1rem;
+      }
+      td {
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 0.75rem;
+        white-space: nowrap;
+        font-weight: 700;
+        content: attr(data-label);
+      }
+      img {
+        width: 100%;
+        max-width: 120px;
+        margin-bottom: 0.5rem;
+      }
+      .quantity-input {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BookNest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="cart.html">Cart</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Shopping Cart</h2>
+    <div id="cartContainer">
+      <!-- Cart table or empty message will be inserted here -->
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script>
+    // Load cart from localStorage and display
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cartContainer');
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="empty-message">Your cart is empty. <a href="books.html">Browse books</a> to add items.</p>';
+        return;
+      }
+
+      let html = `
+        <table aria-label="Shopping Cart">
+          <thead>
+            <tr>
+              <th>Book</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        html += `
+          <tr>
+            <td data-label="Book">
+              <img src="${item.image}" alt="${item.name}" />
+              <span>${item.name}</span>
+            </td>
+            <td data-label="Price">$${item.price.toFixed(2)}</td>
+            <td data-label="Quantity">
+              <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}" aria-label="Quantity of ${item.name}" />
+            </td>
+            <td data-label="Subtotal">$${subtotal.toFixed(2)}</td>
+            <td data-label="Remove">
+              <button class="remove-btn" data-index="${index}" aria-label="Remove ${item.name} from cart">&times;</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += `
+          </tbody>
+        </table>
+        <p class="total">Total: $${total.toFixed(2)}</p>
+      `;
+
+      container.innerHTML = html;
+
+      // Attach event listeners to quantity inputs and remove buttons
+      const quantityInputs = container.querySelectorAll('.quantity-input');
+      quantityInputs.forEach(input => {
+        input.addEventListener('change', onQuantityChange);
+      });
+
+      const removeButtons = container.querySelectorAll('.remove-btn');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', onRemoveItem);
+      });
+    }
+
+    function onQuantityChange(event) {
+      const index = event.target.getAttribute('data-index');
+      let newQty = parseInt(event.target.value);
+      if (isNaN(newQty) || newQty < 1) {
+        newQty = 1;
+        event.target.value = 1;
+      }
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart[index].quantity = newQty;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart(); // Refresh cart display
+    }
+
+    function onRemoveItem(event) {
+      const index = event.target.getAttribute('data-index');
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1); // Remove item
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart(); // Refresh cart display
+    }
+
+    // Initial load
+    loadCart();
+  </script>
+</body>
+</html>
+
+

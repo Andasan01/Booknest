@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Details - BookNest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>BookNest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="cart.html">Cart</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="book-detail">
+      <img src="https://via.placeholder.com/200" alt="Book Cover">
+      <div>
+        <h2>React for Beginners</h2>
+        <p><strong>Price:</strong> $34.99</p>
+        <p><strong>Author:</strong> Jane Smith</p>
+        <p>This book is a great introduction to building modern web applications with React. Learn concepts, components, and real-world practices.</p>
+        <button onclick="addToCart('React for Beginners', 34.99)">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 BookNest. All rights reserved.
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
